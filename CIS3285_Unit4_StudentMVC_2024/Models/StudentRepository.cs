@@ -2,7 +2,7 @@
 {
     public class StudentRepository : IStudentCRUDInterface
     {
-        static List<StudentModel> myStudents = new List<StudentModel>();
+        static List<IStudentModel> myStudents = new List<IStudentModel>();
 
         public StudentRepository()
         {
@@ -16,17 +16,17 @@
 
         }
 
-        public List<StudentModel> getAllStudent()
+        public List<IStudentModel> getAllStudent()
         {
             return myStudents;
         }
 
 
-        public StudentModel getStudentById(int id)
+        public IStudentModel getStudentById(int id)
         {
             //Console.WriteLine("Getting student with id = " + id);
             //return myStudents.Find(s => s.Id == id);
-            foreach (StudentModel student in myStudents)
+            foreach (IStudentModel student in myStudents)
             {
                 if (student.Id == id)
                 {
@@ -39,18 +39,18 @@
 
 
 
-        public StudentModel getOneStudent(int index)
+        public IStudentModel getOneStudent(int index)
         {
             return (myStudents[index]);
         }
-        private StudentModel nullStudent()
+        private IStudentModel nullStudent()
         {
             // create a null student
             StudentModel nullStudent = new StudentModel(-1, "Null Student", -999);
             return nullStudent;
         }
 
-        public void AddStudent(StudentModel newStudent)
+        public void AddStudent(IStudentModel newStudent)
         {
             myStudents.Add(newStudent);
         }
@@ -63,7 +63,7 @@
             myStudents.RemoveAt(index);
         }
 
-        public void UpdateStudent(int studentId, StudentModel updatedStudent)
+        public void UpdateStudent(int studentId, IStudentModel updatedStudent)
         {
             // search the list for the student that matches the student ID
             // DEBT --- Handle case when student id not found and index is -1
